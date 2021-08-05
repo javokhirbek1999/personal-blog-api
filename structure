@@ -1,0 +1,23 @@
+1. Blog:
+    Models:
+        1. Category
+        2. Post
+        3. Comment
+        4. Reply
+2. API:
+    Serializers
+    Views:
+        1. Post List
+        2. Post Detail
+        3. Search (Filter)
+        4. Comments
+        5. Replies
+    URLs
+3. USER:
+    Models:
+        Customer User
+    Serializers
+    Views
+4. Permissions
+5. Authentication:
+    JWT
