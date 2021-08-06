@@ -57,6 +57,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.post.title
     
+    @property
+    def get_username(self):
+        return self.user.username
+    
 
 class Reply(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)

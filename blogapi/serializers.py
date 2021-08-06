@@ -18,7 +18,7 @@ class CategorySerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('id','user','post','body','posted')
+        fields = ('id','user','get_username','post','body','posted')
 
 
 class ReplySerializer(serializers.ModelSerializer):
