@@ -2,12 +2,13 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
 
-from .views import AllUsers, BlacklistTokenUpdateView
+from .views import AllUsers, SuperuserView, BlacklistTokenUpdateView
 
 app_name = 'users'
 
 router = DefaultRouter()
-router.register('', AllUsers)
+router.register('users', AllUsers)
+router.register('superusers',SuperuserView)
 
 
 urlpatterns = [

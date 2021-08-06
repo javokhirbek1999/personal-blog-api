@@ -23,4 +23,13 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(validated_data['password'])
         instance.save()
         return instance
-            
+
+class SuperuserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('id','email','username','password','name','joined_at')
+    
+    def create(self, validated_data):
+        instance = User.objects.create_superuser(**validated_data)
+        instance.save()
+        return instance

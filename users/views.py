@@ -10,7 +10,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
 from .models import User
-from .serializers import UserSerializer
+from .serializers import UserSerializer, SuperuserSerializer
 from .permissions import IsOwner
 
 class AllUsers(viewsets.ModelViewSet):
@@ -37,3 +37,16 @@ class BlacklistTokenUpdateView(APIView):
             return Response(status=status.HTTP_205_RESET_CONTENT)
         except Exception as e:
             return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class SuperuserView(viewsets.ModelViewSet):
+    permission_classes = (permissions.AllowAny,)
+    serializer_class = SuperuserSerializer
+    queryset = User.objects.filter(is_superuser=True)
+
+    def perform_create(self, serializer):
+        if serializer.is_valid():
+            user = serializer.save()
+            if user:
+                return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
