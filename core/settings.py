@@ -201,4 +201,4 @@ MEDIA_URL = '/media/'
 
 AUTH_USER_MODEL = 'users.User'
 
-django_heroku.settins(locals())
+django_heroku.settings(locals())
